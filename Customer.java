@@ -20,26 +20,26 @@ public class Customer {
     }
 
     // new method amontFor
-    private double amontFor(Rental each) {
+    private double amontFor(Rental aRental) {
         double thisAmount = 0;
 
         // determine amonts for each line
-        switch (each.getMovie().getPriceCode()) {
+        switch (aRental.getMovie().getPriceCode()) {
 
             case Movie.REGULAR:
                 thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
+                if (aRental.getDaysRented() > 2)
+                    thisAmount += (aRental.getDaysRented() - 2) * 1.5;
                 break;
 
             case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
+                thisAmount += aRental.getDaysRented() * 3;
                 break;
 
             case Movie.CHILDRENS:
                 thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3) * 1.5;
+                if (aRental.getDaysRented() > 3)
+                    thisAmount += (aRental.getDaysRented() - 3) * 1.5;
                 break;
         }
 
