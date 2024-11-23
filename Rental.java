@@ -2,23 +2,23 @@ package AtividadeVitorRefactoring;
 
 public class Rental {
 
-    private Movie _movie;
-    private int _daysRented;
- 
-    public Rental(Movie movie, int daysRented) {
-       _movie = movie;
-       _daysRented = daysRented;
-    }
- 
-    public int getDaysRented() {
-       return _daysRented;
-    }
- 
-    public Movie getMovie() {
-       return _movie;
-    }
+   private Movie _movie;
+   private int _daysRented;
 
-    private double getCharge() {
+   public Rental(Movie movie, int daysRented) {
+      _movie = movie;
+      _daysRented = daysRented;
+   }
+
+   public int getDaysRented() {
+      return _daysRented;
+   }
+
+   public Movie getMovie() {
+      return _movie;
+   }
+
+   protected double getCharge() {
       double thisAmount = 0;
 
       switch (getMovie().getPriceCode()) {
@@ -42,4 +42,12 @@ public class Rental {
 
       return thisAmount;
    }
- }
+
+   public int getFrequentRenterPoints() {
+      if (getMovie().getPriceCode() == Movie.NEW_RELEASE) {
+         return 2;
+      } else {
+         return 1;
+      }
+   }
+}
