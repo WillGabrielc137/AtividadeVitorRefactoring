@@ -19,7 +19,32 @@ public class Customer {
       return _name;
    }
 
-   public double getTotalCharge(){
+   public String htmlStatement() {
+      String result = "<h1>Rental Record for " + getName() + "</h1\n>";
+      result += "<tables>\n";
+      result += "<tr><th>Title</th><th>Amont</th></tr>\n";
+
+      Enumeration rentals = _rentals.elements();
+
+      while (rentals.hasMoreElements()) {
+         double thisAmount = 0;
+         Rental each = (Rental) rentals.nextElement();
+
+         thisAmount = each.getCharge();
+
+         result += "<tr><td>" + each.getMovie().getTitle() + "</td><td>" +
+               String.valueOf(thisAmount) + "</td></tr>\n";
+      }
+
+      result += "</table>\n";
+      result += "<p>Amount owed is <strong>" + String.valueOf(getTotalCharge()) + "</strong></p>\n";
+      result += "<p>You earned <strong>" + String.valueOf(getTotalFrequentRenterPoints())
+            + "</strong> frequent renter points</p>\n";
+
+      return result;
+   }
+
+   public double getTotalCharge() {
       double totalAmount = 0;
       Enumeration rentals = _rentals.elements();
 
@@ -31,7 +56,7 @@ public class Customer {
       return totalAmount;
    }
 
-   public int getTotalFrequentRenterPoints(){
+   public int getTotalFrequentRenterPoints() {
       int frequentRenterPoints = 0;
       Enumeration rentals = _rentals.elements();
 
@@ -41,26 +66,5 @@ public class Customer {
       }
 
       return frequentRenterPoints;
-   }
-
-   public String statement() {
-      String result = "Rental Record for " + getName() + "\n";
-
-      Enumeration rentals = _rentals.elements();
-
-      while (rentals.hasMoreElements()) {
-         double thisAmount = 0;
-         Rental each = (Rental) rentals.nextElement();
-
-         thisAmount = each.getCharge();
-
-         result += "\t" + each.getMovie().getTitle() + "\t" +
-               String.valueOf(thisAmount) + "\n";
-      }
-
-      result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-      result += "You earned " + String.valueOf(frequentRenterPoints) +
-            " frequent renter points";
-      return result;
    }
 }
