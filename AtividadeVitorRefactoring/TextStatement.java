@@ -12,14 +12,14 @@ public class TextStatement extends Statement {
     @Override
     protected String generateRentalDetails(Rental each) {
         return "\t" + each.getMovie().getTitle() + "\t" +
-               String.valueOf(each.getCharge()) + "\n";
+                String.valueOf(each.getCharge()) + "\n";
     }
 
     @Override
     protected String generateFooter(Customer aCustomer) {
         String footer = "Amount owed is " + String.valueOf(aCustomer.getTotalCharge()) + "\n";
         footer += "You earned " + String.valueOf(aCustomer.getTotalFrequentRenterPoints()) +
-                  " frequent renter points";
+                " frequent renter points";
         return footer;
     }
 }

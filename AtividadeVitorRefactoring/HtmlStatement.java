@@ -12,14 +12,14 @@ public class HtmlStatement extends Statement {
     @Override
     protected String generateRentalDetails(Rental each) {
         return each.getMovie().getTitle() + ": " +
-               String.valueOf(each.getCharge()) + "<BR>\n";
+                String.valueOf(each.getCharge()) + "<BR>\n";
     }
 
     @Override
     protected String generateFooter(Customer aCustomer) {
         String footer = "<P>You owe <EM>" + String.valueOf(aCustomer.getTotalCharge()) + "</EM><P>\n";
         footer += "On this rental you earned <EM>" + String.valueOf(aCustomer.getTotalFrequentRenterPoints()) +
-                  "</EM> frequent renter points<P>";
+                "</EM> frequent renter points<P>";
         return footer;
     }
 }
